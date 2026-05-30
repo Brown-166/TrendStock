@@ -1,0 +1,7 @@
+com\mycompany\trendstock\Pedido.class
+com\mycompany\trendstock\TrendStock.class
+com\mycompany\trendstock\Produto.class
+com\mycompany\trendstock\EntradaInvalidaException.class
+com\mycompany\trendstock\ItemPedido.class
+com\mycompany\trendstock\Colecao.class
+com\mycompany\trendstock\Relatorio.class
