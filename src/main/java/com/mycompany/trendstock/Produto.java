@@ -6,7 +6,7 @@ public class Produto {
     private double precoCusto;
     private double precoVenda;
     private int quantidadeEstoque;
-    private String[] tamanho;
+    private String[] tamanhos;
     private String categoria;
 
     
@@ -65,15 +65,16 @@ public class Produto {
             this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public String[] getTamanho() {
-        return tamanho;
+    public String[] getTamanhos() {
+        return tamanhos;
     }
 
-    public void setTamanho(String[] tamanho) throws EntradaInvalidaException{
-        if (tamanho[0] == null || tamanho[0].isBlank())
+    public void setTamanhos(String[] tamanhos) throws EntradaInvalidaException{
+        if (tamanhos == null || tamanhos.length == 0 || 
+                tamanhos[0] == null || tamanhos[0].isBlank())
             throw new EntradaInvalidaException("!!!O produto deve ter pelo menos 1 tamanho!!!");
         else
-            this.tamanho = tamanho;
+            this.tamanhos = tamanhos;
     }
 
     public String getCategoria() {
@@ -90,13 +91,13 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String sku, String nome, double precoCusto, double precoVenda, int quantidadeEstoque, String[] tamanho, String categoria) throws EntradaInvalidaException{
+    public Produto(String sku, String nome, double precoCusto, double precoVenda, int quantidadeEstoque, String[] tamanhos, String categoria) throws EntradaInvalidaException{
         setSKU(sku);
         setNome(nome);
         setPrecoCusto(precoCusto);
         setPrecoVenda(precoVenda);
         setQuantidadeEstoque(quantidadeEstoque);
-        setTamanho(tamanho);
+        setTamanhos(tamanhos);
         setCategoria(categoria);
     }
         
@@ -121,7 +122,10 @@ public class Produto {
                 if (this.precoCusto >= 0){
                     if (this.precoVenda >= 0){
                         if (this.quantidadeEstoque >= 0){
-                            if (this.tamanho[0] != null && !this.tamanho[0].isBlank()){
+                            if (this.tamanhos != null && 
+                                    this.tamanhos.length > 0 && 
+                                    this.tamanhos[0] != null && 
+                                    !this.tamanhos[0].isBlank()){
                                 if (this.categoria != null && !this.categoria.isBlank()){
                                     return true;
                                 }

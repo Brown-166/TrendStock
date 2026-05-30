@@ -43,8 +43,9 @@ public class TrendStock {
 
                 colecoesCadastradas.add(colecao1);
                 colecoesCadastradas.add(colecao2);
-            } catch (EntradaInvalidaException ex) {
-
+            } 
+            catch (EntradaInvalidaException e) {
+                System.out.println(e.getMessage());
             }
 
             ItemPedido itemBlusa = new ItemPedido(blusa, 4);
@@ -56,7 +57,7 @@ public class TrendStock {
             ArrayList<ItemPedido> itens2 = new ArrayList<>();
             itens2.add(itemCalca);
 
-            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            
 
             Pedido pedido1 = new Pedido(itens1);
 
@@ -176,17 +177,16 @@ public class TrendStock {
                     }
 
                     if (!colecoesCadastradas.isEmpty()){
-                        boolean produtosValidos = false;
+                        int produtosValidos = 0;
                         for (Produto produto : produtosCadastrados){
                             for (Colecao colecaoLista : colecoesCadastradas){
                                 if (!colecaoLista.getProdutos().contains(produto))
-                                    produtosValidos = true;
-                                else
-                                    produtosValidos = false;
+                                    produtosValidos += 1;
+                                
                             }
                         }
 
-                        if (!produtosValidos){
+                        if (produtosValidos == 0){
                             System.out.println("!!!Não existem produtos válidos "
                                     + "para serem adicionados a uma coleção!!!");
                             break;
@@ -256,7 +256,7 @@ public class TrendStock {
             
             String[] tamanhos = dadoProduto.split(" ");
             
-            produto.setTamanho(tamanhos);
+            produto.setTamanhos(tamanhos);
 
             System.out.println("Digite o preço do custo: ");
             dadoProduto = scanner.nextLine();
@@ -278,7 +278,7 @@ public class TrendStock {
             System.out.println("!!!Entrada inválida!!!");
         }
         catch(EntradaInvalidaException e){
-            
+            System.out.println(e.getMessage());
         }
         
         
@@ -386,11 +386,11 @@ public class TrendStock {
             System.out.println("!!!Entrada inválida!!!");
         }
         catch(EntradaInvalidaException e){
-            
+            System.out.println(e.getMessage());
         }
-        finally{
-            return colecao;
-        }  
+        
+        
+        return colecao;  
    }
    
    
@@ -619,7 +619,7 @@ public class TrendStock {
             System.out.println("!!!Entrada inválida!!!");
         }
         catch(EntradaInvalidaException e){
-            
+            System.out.println(e.getMessage());
         }
     }
     
@@ -729,8 +729,8 @@ public class TrendStock {
             System.out.println("SKU: " + produto.getSKU());
             System.out.println("Categoria: " + produto.getCategoria());
             System.out.println("Nome: " + produto.getNome());
-            System.out.print("Tamanho: "); 
-            for (String tamanho : produto.getTamanho()){
+            System.out.print("Tamanhos: "); 
+            for (String tamanho : produto.getTamanhos()){
                 System.out.print(tamanho + " "); 
             }
             System.out.println("Preço: " + String.format("%.2f", produto.getPrecoVenda()));
@@ -933,8 +933,8 @@ public class TrendStock {
                     item.setQuantidade(quantidade);
                     
                 } 
-                catch (EntradaInvalidaException ex) {
-                    
+                catch (EntradaInvalidaException e) {
+                    System.out.println(e.getMessage());
                 }
             }
         }
@@ -966,8 +966,8 @@ public class TrendStock {
                         
                         itemColecao.add(item);
                     } 
-                    catch (EntradaInvalidaException ex) {
-
+                    catch (EntradaInvalidaException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
             }

@@ -46,6 +46,8 @@ public class Pedido {
     }
     
     public void calcularTotal(){
+        this.valorTotal = 0;
+        
         for (ItemPedido item : this.itens){
             this.valorTotal += item.calcularSubtotal();
         }

@@ -47,8 +47,10 @@ public class Colecao {
     }
 
     public void setProdutos(ArrayList<Produto> produtos) {
-        for (Produto p : produtos){
-            adicionarProduto(p);
+        if (produtos != null){
+            for (Produto p : produtos){
+                adicionarProduto(p);
+            }
         }
     }
 
@@ -82,7 +84,10 @@ public class Colecao {
             System.out.println(String.format("SKU: %s", p.getSKU()));
             System.out.println(String.format("Nome: %s", p.getNome()));
             System.out.println(String.format("Categoria: %s", p.getCategoria()));
-            System.out.println(String.format("Tamanho: %s", p.getTamanho()));
+            System.out.print("Tamanhos: "); 
+            for (String tamanho : p.getTamanhos()){
+                System.out.print(tamanho + " "); 
+            }
             System.out.println(String.format("Preço: R$ %.2f", p.getPrecoVenda()));
         }
     }
